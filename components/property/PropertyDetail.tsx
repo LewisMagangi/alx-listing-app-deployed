@@ -33,7 +33,7 @@ const PropertyDetail: React.FC<{ property: PropertyProps }> = ({ property }) => 
           </ul>
         </div>
         {/* Reviews */}
-        <ReviewSection reviews={property.reviews || []} />
+        <ReviewSection propertyId={property.id || property.name} />
       </div>
       <div>
         <BookingSection price={property.price} />

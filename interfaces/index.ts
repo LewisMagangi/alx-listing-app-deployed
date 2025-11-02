@@ -24,6 +24,7 @@ export interface ButtonProps {
 
 // Property listing interface for PROPERTYLISTINGSAMPLE
 export interface PropertyProps {
+  id?: string;
   name: string;
   address: {
     state: string;
@@ -40,6 +41,7 @@ export interface PropertyProps {
   };
   image: string;
   discount: string;
+  description?: string;
 }
 
 // API Response interface
