@@ -36,7 +36,7 @@ const BookingForm = () => {
     setSuccess(false);
 
     try {
-      const response = await axios.post("/api/bookings", formData);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/bookings`, formData);
       setSuccess(true);
       alert("Booking confirmed!");
       // Reset form
