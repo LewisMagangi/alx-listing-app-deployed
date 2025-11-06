@@ -1,6 +1,7 @@
 # API Integration Documentation
 
 ## Overview
+
 This document describes the API integration implemented in alx-listing-app-04. All pages and components have been updated to fetch data dynamically from REST APIs instead of using hardcoded data.
 
 ## API Endpoints
@@ -8,17 +9,21 @@ This document describes the API integration implemented in alx-listing-app-04. A
 The application integrates with the following API endpoints:
 
 ### Properties
+
 - **GET /api/properties** - Fetches the list of all properties for the listing page
 - **GET /api/properties/:id** - Fetches details of a single property by ID
 - **GET /api/properties/:id/reviews** - Fetches reviews for a specific property
 
 ### Bookings
+
 - **POST /api/bookings** - Submits booking details to the server
 
 ## Updated Files
 
 ### 1. Property Listing Page (`pages/index.tsx`)
+
 **Changes:**
+
 - Added `useEffect` hook to fetch properties on component mount
 - Implemented loading and error state management
 - Properties are now fetched from `/api/properties`
@@ -26,26 +31,32 @@ The application integrates with the following API endpoints:
 - Updated to handle dynamic property data structure
 
 **Features:**
+
 - Loading indicator while data is being fetched
 - Error message display if API call fails
 - Client-side filtering still works with API data
 - Safe property access with optional chaining
 
 ### 2. Property Detail Page (`pages/property/[id].tsx`)
+
 **Changes:**
+
 - Replaced hardcoded property lookup with API call
 - Fetches property details from `/api/properties/:id` based on route parameter
 - Implemented loading and error states
 - Added proper TypeScript typing
 
 **Features:**
+
 - Dynamic property ID from URL route
 - Loading state during data fetch
 - Error handling for failed requests
 - "Property not found" message for invalid IDs
 
 ### 3. Booking Form (`components/booking/BookingForm.tsx`)
+
 **Changes:**
+
 - Converted from stateless to stateful component
 - Added form state management with `useState`
 - Implemented `handleSubmit` function to POST data to `/api/bookings`
@@ -53,6 +64,7 @@ The application integrates with the following API endpoints:
 - Included loading, error, and success states
 
 **Features:**
+
 - Form data is submitted via POST request
 - Loading indicator during submission ("Processing...")
 - Error message display on submission failure
@@ -61,7 +73,9 @@ The application integrates with the following API endpoints:
 - Disabled submit button during processing
 
 ### 4. Review Section (`components/property/ReviewSection.tsx`)
+
 **Changes:**
+
 - Refactored to fetch reviews from API instead of receiving as props
 - Added `propertyId` prop to determine which property's reviews to fetch
 - Fetches reviews from `/api/properties/:id/reviews`
@@ -69,6 +83,7 @@ The application integrates with the following API endpoints:
 - Added empty state message when no reviews exist
 
 **Features:**
+
 - Automatic review fetching on component mount
 - Loading indicator while fetching reviews
 - Error handling with error messages
@@ -76,12 +91,16 @@ The application integrates with the following API endpoints:
 - Unique key generation for review items
 
 ### 5. Property Detail Component (`components/property/PropertyDetail.tsx`)
+
 **Changes:**
+
 - Updated to pass `propertyId` to `ReviewSection` instead of review data
 - Reviews are now fetched independently by the ReviewSection component
 
 ### 6. TypeScript Interfaces (`interfaces/index.ts`)
+
 **Changes:**
+
 - Added optional `id` field to `PropertyProps` interface
 - Added optional `description` field to `PropertyProps` interface
 - Ensures compatibility with API response structure
@@ -89,9 +108,11 @@ The application integrates with the following API endpoints:
 ## Dependencies
 
 ### New Dependencies Added
+
 - **axios** (^1.6.0) - HTTP client for making API requests
 
 Install dependencies:
+
 ```bash
 npm install
 ```
@@ -109,6 +130,7 @@ All API-integrated components include comprehensive error handling:
 ## Loading States
 
 Every API integration includes a loading state:
+
 - Property listing: "Loading properties..."
 - Property details: "Loading property details..."
 - Reviews: "Loading reviews..."
@@ -117,6 +139,7 @@ Every API integration includes a loading state:
 ## Data Safety
 
 All components use safe data access patterns:
+
 - Optional chaining (`property.address?.city`)
 - Fallback values (`property.data || []`)
 - Array type checking before filtering
@@ -127,6 +150,7 @@ All components use safe data access patterns:
 To test the API integration:
 
 1. **Start the development server:**
+
    ```bash
    npm run dev
    ```
